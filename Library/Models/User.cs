@@ -20,7 +20,7 @@ namespace Library.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public Nullable<int> ImageId { get; set; }
+        public int ImageId { get; set; }
     
         public virtual Image Image { get; set; }
     }

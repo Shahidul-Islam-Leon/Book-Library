@@ -25,6 +25,7 @@ namespace Library.Models
         public string Author { get; set; }
         public string Edition { get; set; }
         public double Price { get; set; }
+        public string File { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Genre> Genres { get; set; }

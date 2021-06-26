@@ -6,17 +6,16 @@ using System.Web.Mvc;
 
 namespace Library.Controllers
 {
-    public class UserController : Controller
+    public class BookController : Controller
     {
-        // GET: User
+        // GET: Book
         public ActionResult Index()
         {
             return View();
         }
-        
 
         [HttpGet]
-        public ActionResult Registration()
+        public ActionResult AddBook()
         {
             return View();
         }

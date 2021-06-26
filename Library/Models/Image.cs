@@ -14,17 +14,11 @@ namespace Library.Models
     
     public partial class Image
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Image()
-        {
-            this.Users = new HashSet<User>();
-        }
-    
         public int Id { get; set; }
         public string Path { get; set; }
         public string FileType { get; set; }
+        public int UserId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual User User { get; set; }
     }
 }
