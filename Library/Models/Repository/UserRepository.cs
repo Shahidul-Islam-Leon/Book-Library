@@ -7,6 +7,8 @@ namespace Library.Models.Repository
 {
     public class UserRepository : Repository<User>
     {
+
+       
         public User GetUserByUsername(string username)
         {
 

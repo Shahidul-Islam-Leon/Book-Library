@@ -6,15 +6,12 @@ using System.Web.Mvc;
 
 namespace Library.Controllers
 {
-    public class HomeController : Controller
+    public class AdminController : Controller
     {
-        
+        // GET: Admin
         public ActionResult Index()
         {
             return View();
         }
-
-        
-
     }
 }

@@ -13,10 +13,10 @@ namespace Library.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LibraryDB : DbContext
+    public partial class LibraryDBEntities : DbContext
     {
-        public LibraryDB()
-            : base("name=LibraryDB")
+        public LibraryDBEntities()
+            : base("name=LibraryDBEntities")
         {
         }
     

@@ -11,17 +11,41 @@ namespace Library.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
-        public int Id { get; set; }
-        public string Username { get; set; }
-        public string UserType { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public int ImageId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Images = new HashSet<Image>();
+        }
     
-        public virtual Image Image { get; set; }
+        [Key]
+        public int Id { get; set; }
+
+        [Required(ErrorMessage ="*Name Required")]
+        public string Name { get; set; }
+        public string UserType { get; set; }
+
+
+        [Required(ErrorMessage ="*Password Required"),MinLength(4,ErrorMessage ="*Password should be atleast 4 character ")]
+        public string Password { get; set; }
+
+
+        [Required(ErrorMessage = "*Email Required")]
+        public string Email { get; set; }
+
+
+        [Required(ErrorMessage = "*Phone Number Required")]
+        public string Phone { get; set; }
+
+
+        [Required(ErrorMessage = "*Username Required")]
+        public string Username { get; set; }
+
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Image> Images { get; set; }
     }
 }
