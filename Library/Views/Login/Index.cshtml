@@ -1,5 +1,5 @@
 ﻿
-
+@model Library.Models.User
 <div>
     <form action="" method="post">
 
@@ -8,11 +8,21 @@
                 <td>
                     Username
                 </td>
-                <td><input type="text" name="Username" placeholder="Usename" value="" /></td>
+                <td>
+                    <input type="text" name="Username" placeholder="Usename" value="" /> <br />
+                    <span style="color:red">@Html.ValidationMessageFor(model => model.Username)</span>
+                </td>
+
             </tr>
             <tr>
                 <td>Password</td>
-                <td><input type="password" name="Password" placeholder="Password" value="" /></td>
+                <td>
+                    <input type="password" name="Password" placeholder="Password" value="" />
+                    <br /> <span style="color:red">@Html.ValidationMessageFor(model => model.Password)</span>
+                    <span style="color:red;">@TempData["error"]</span>
+                </td>
+
+                
             </tr>
 
             <tr>

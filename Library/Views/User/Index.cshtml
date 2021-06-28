@@ -1,19 +1,9 @@
 ﻿
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
+<div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div> 
 
-        <h1>This is user homepage</h1>
-    </div>
-</body>
-</html>
+    <h1 style="color:forestgreen">Welcome, @Session["Username"].ToString()</h1>
+    <a href="../logout/index">logout</a>
+</div>
+

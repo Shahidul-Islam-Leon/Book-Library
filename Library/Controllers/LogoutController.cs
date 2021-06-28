@@ -6,14 +6,16 @@ using System.Web.Mvc;
 
 namespace Library.Controllers
 {
-    public class AdminController : Controller
+    public class LogoutController : Controller
     {
-        // GET: Admin
-        
-        [HttpGet]
+        // GET: Logout
         public ActionResult Index()
         {
-            return View();
+            Session.Clear();
+            
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
+            
         }
     }
 }
