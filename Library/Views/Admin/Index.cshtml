@@ -1,5 +1,23 @@
 ﻿
-    <div> 
-        <h1>Welcome,@Session["Username"].ToString()</h1>
-        <a href="../logout/index">logout</a>
-    </div>
+<div>
+    <table align="right">
+        <tr>
+            <td> <h1>Welcome @Session["Username"].ToString(),</h1></td>
+
+            <td> <a href="../logout/index"><h1>logout</h1></a></td>
+        </tr>
+
+    </table>
+</div>
+<div>
+    <table>
+        <tr>
+            <td><a href="../Book/AddBook"><h3>Add Book</h3></a></td>
+        </tr>
+        <tr>
+            <td><a href="/Admin/AddAdmin"><h3>Add Admin</h3></a></td>
+        </tr>
+    </table>
+    
+
+</div>

@@ -1,0 +1,59 @@
+﻿@model Library.Models.User
+<div>
+    <form action="" method="post">
+
+        <table align="center">
+            <tr>
+                <td>Username</td>
+                <td><input type="text" name="Username" placeholder="Username" value="" /></td>
+                <td> <span style="color:red">@Html.ValidationMessageFor(model => model.Username)</span></td>
+            </tr>
+
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="Name" placeholder="Name" value="" /></td>
+                <td>
+                    <span style="color:red">@Html.ValidationMessageFor(model => model.Name)</span>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td><input type="email" name="Email" placeholder="Email" value="" /></td>
+                <td> <span style="color:red">@Html.ValidationMessageFor(model => model.Email)</span></td>
+            </tr>
+
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="Password" placeholder="Password" value="" /></td>
+                <td> <span style="color:red">@Html.ValidationMessageFor(model => model.Password)</span></td>
+            </tr>
+
+            <tr>
+                <td>Confirm Password</td>
+                <td><input type="password" name="ConfirmPassword" placeholder="Confirm Password" value="" /></td>
+            </tr>
+
+
+
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" name="Phone" placeholder="Phone Number" value="" /></td>
+                <td> <span style="color:red">@Html.ValidationMessageFor(model => model.Phone)</span></td>
+            </tr>
+
+            <tr>
+                <td align="right" colspan="2">
+                    <input type="submit" value="Add" />
+                </td>
+
+            </tr>
+           
+
+
+
+        </table>
+
+    </form>
+</div>

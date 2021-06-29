@@ -24,24 +24,24 @@ namespace Library.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="*Name Required")]
+        [Required(ErrorMessage ="*Name can't be empty")]
         public string Name { get; set; }
         public string UserType { get; set; }
 
 
-        [Required(ErrorMessage ="*Password Required"),MinLength(4,ErrorMessage ="*Password should be atleast 4 character ")]
+        [Required(ErrorMessage ="*Password Can't be empty"),MinLength(4,ErrorMessage ="*Password should be atleast 4 character ")]
         public string Password { get; set; }
 
 
-        [Required(ErrorMessage = "*Email Required")]
+        [Required(ErrorMessage = "*Email can't be empty")]
         public string Email { get; set; }
 
 
-        [Required(ErrorMessage = "*Phone Number Required")]
+        [Required(ErrorMessage = "*Phone can't be empty")]
         public string Phone { get; set; }
 
 
-        [Required(ErrorMessage = "*Username Required")]
+        [Required(ErrorMessage = "*Username can't be empty")]
         public string Username { get; set; }
 
     

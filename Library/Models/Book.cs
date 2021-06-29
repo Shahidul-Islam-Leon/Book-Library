@@ -11,7 +11,8 @@ namespace Library.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Book
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +22,20 @@ namespace Library.Models
         }
     
         public int Id { get; set; }
+
+        [Required(ErrorMessage ="*Enter book Title")]
         public string Title { get; set; }
+
+        [Required(ErrorMessage = "*Enter book Author")]
         public string Author { get; set; }
+
+        [Required(ErrorMessage = "*Enter book Edition")]
         public string Edition { get; set; }
+
+        [Required(ErrorMessage = "*Enter book Price")]
         public double Price { get; set; }
+
+
         public string File { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

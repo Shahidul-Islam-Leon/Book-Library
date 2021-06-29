@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Library.Models;
+using Library.Models.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,5 +21,23 @@ namespace Library.Controllers
         {
             return View();
         }
+        
+        public ActionResult AddBook(Book book)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+
+                BookRepository br = new BookRepository();
+                br.Insert(book);
+                return RedirectToAction("Index","Admin");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
     }
 }
