@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LibraryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LibraryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Books">
           <Key>
             <PropertyRef Name="Id" />
@@ -29,7 +29,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Genre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GenreName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Images">
           <Key>
@@ -107,7 +107,8 @@
             <End Role="Images" EntitySet="Images" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LibraryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -128,7 +129,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Genre1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GenreName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="Self.Books_Genres" FromRole="Genres" ToRole="Books" />
         </EntityType>
         <EntityType Name="Image">
@@ -146,13 +147,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Images" Relationship="Self.FK_Images_Users" FromRole="Users" ToRole="Images" />
-          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Images_Users">
           <End Role="Users" Type="Self.User" Multiplicity="1" />
@@ -170,7 +171,7 @@
           <End Role="Books" Type="Self.Book" Multiplicity="*" />
           <End Role="Genres" Type="Self.Genre" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="LibraryDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Books" EntityType="Self.Book" />
           <EntitySet Name="Genres" EntityType="Self.Genre" />
           <EntitySet Name="Images" EntityType="Self.Image" />
@@ -189,7 +190,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LibraryDBModelStoreContainer" CdmEntityContainer="LibraryDBEntities">
+        <EntityContainerMapping StorageEntityContainer="LibraryDBModelStoreContainer" CdmEntityContainer="DBEntities">
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="LibraryDBModel.Book">
               <MappingFragment StoreEntitySet="Books">
@@ -206,7 +207,7 @@
             <EntityTypeMapping TypeName="LibraryDBModel.Genre">
               <MappingFragment StoreEntitySet="Genres">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Genre1" ColumnName="Genre" />
+                <ScalarProperty Name="GenreName" ColumnName="GenreName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -223,8 +224,8 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="LibraryDBModel.User">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="UserType" ColumnName="UserType" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

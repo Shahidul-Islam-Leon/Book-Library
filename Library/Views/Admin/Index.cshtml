@@ -2,9 +2,7 @@
 <div>
     <table align="right">
         <tr>
-            <td> <h1>Welcome @Session["Username"].ToString(),</h1></td>
-
-            <td> <a href="../logout/index"><h1>logout</h1></a></td>
+            <td> <h1 style="color:darkgreen">Welcome <a href="/Admin/AdminProfile">@Session["Username"].ToString()</a></h1></td>
         </tr>
 
     </table>
@@ -12,12 +10,27 @@
 <div>
     <table>
         <tr>
+            <td><a href="/Admin/Admins"><h3>Admin</h3></a></td>
+        </tr>
+        <tr>
             <td><a href="../Book/AddBook"><h3>Add Book</h3></a></td>
         </tr>
         <tr>
-            <td><a href="/Admin/AddAdmin"><h3>Add Admin</h3></a></td>
+            <td><a href="/Genre/Index"><h3>Genre</h3></a></td>
+        </tr>
+
+        <tr>
+            <td>
+                <a href="/Admin/AdminProfile"><h3>Profile</h3></a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <a href="../logout/index"><h3>logout</h3></a>
+            </td>
         </tr>
     </table>
-    
+
 
 </div>

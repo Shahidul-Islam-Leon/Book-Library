@@ -5,8 +5,7 @@ using System.Web;
 
 namespace Library.Models.Repository
 {
-    public class BookRepository : Repository<Book>
-    {
-        
-    }
+	public class GenreRepository:Repository<Genre>
+	{
+	}
 }

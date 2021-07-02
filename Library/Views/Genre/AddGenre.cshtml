@@ -1,0 +1,19 @@
+﻿@model Library.Models.Genre
+    <div> 
+        <form action="" method="post">
+            <table>
+                <tr>
+                    <td>Genre Name</td>
+                    <td><input type="text" name="GenreName" value="" /></td>
+                    <td>
+                        <span style="color:red">@Html.ValidationMessageFor(model => model.GenreName)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td align="right"><input type="submit" name="Submit" value="Add" /></td>
+                    
+                </tr>
+            </table>
+        </form>
+    </div>

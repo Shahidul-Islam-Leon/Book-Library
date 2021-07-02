@@ -29,6 +29,7 @@ namespace Library.Controllers
         {
             if (ModelState.IsValid)
             {
+               
                 user.UserType = "Customer";
                 ur.Insert(user);
 

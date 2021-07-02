@@ -8,17 +8,17 @@ namespace Library.Models.Repository
     public class UserRepository : Repository<User>
     {
 
-       
+        DBEntities context = new DBEntities();
         public User GetUserByUsername(string username)
         {
 
             return this.GetALLData().Where(x => x.Username == username).FirstOrDefault();
 
         }
-        public User GetUserByUsernameAndPassword(string username,string password)
+        public List<User> GetAllAdmin(string usertype)
         {
 
-            return this.GetALLData().Where(x => x.Username == username && x.Password==password).FirstOrDefault();
+            return this.GetALLData().Where(x => x.UserType == usertype).ToList();
 
         }
 

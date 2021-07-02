@@ -12,6 +12,7 @@ namespace Library.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Xunit;
 
     public partial class Book
     {
@@ -23,19 +24,17 @@ namespace Library.Models
     
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="*Enter book Title")]
+        [Required(ErrorMessage = "*Book title can't be empty")]
         public string Title { get; set; }
 
-        [Required(ErrorMessage = "*Enter book Author")]
+        [Required(ErrorMessage = "*Author can't be empty")]
         public string Author { get; set; }
 
-        [Required(ErrorMessage = "*Enter book Edition")]
+        [Required(ErrorMessage = "*Book edition required")]
         public string Edition { get; set; }
 
-        [Required(ErrorMessage = "*Enter book Price")]
+        [Required(ErrorMessage = "*Book price required")]
         public double Price { get; set; }
-
-
         public string File { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

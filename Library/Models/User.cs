@@ -21,29 +21,34 @@ namespace Library.Models
             this.Images = new HashSet<Image>();
         }
     
-        [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="*Name can't be empty")]
+
+        [Required(ErrorMessage ="*Username can't be empty"), MaxLength(26),
+         MinLength(4,ErrorMessage ="Username should be atleast 4 character")]
+        public string Username { get; set; }
+
+
+        [Required(ErrorMessage = "*Name can't be empty")]
         public string Name { get; set; }
         public string UserType { get; set; }
 
 
-        [Required(ErrorMessage ="*Password Can't be empty"),MinLength(4,ErrorMessage ="*Password should be atleast 4 character ")]
+        [Required(ErrorMessage = "*Password required"),
+        MinLength(4,ErrorMessage ="Password should be atleast 4 character")]
         public string Password { get; set; }
 
 
-        [Required(ErrorMessage = "*Email can't be empty")]
+        [Required(ErrorMessage = "*Confirm Password required")][Compare("Password",ErrorMessage ="*Password doesn't match")]
+        public string ConfirmPassword { get; set; }
+
+
+        [Required(ErrorMessage = "*Email required")]
         public string Email { get; set; }
 
 
-        [Required(ErrorMessage = "*Phone can't be empty")]
+        [Required(ErrorMessage = "*Phone number required")]
         public string Phone { get; set; }
-
-
-        [Required(ErrorMessage = "*Username can't be empty")]
-        public string Username { get; set; }
-
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }

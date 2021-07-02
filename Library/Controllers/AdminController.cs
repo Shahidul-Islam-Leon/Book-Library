@@ -13,27 +13,116 @@ namespace Library.Controllers
         // GET: Admin
 
         UserRepository ur = new UserRepository();
-        
+        DBEntities context = new DBEntities();
+
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            if ((string)Session["Usertype"] == "Admin")
+            {
+                return View();
+            }
+
+
+            else
+            {
+                return RedirectToAction("index", "Login");
+
+            }
         }
+
+
+        [HttpGet]
+        public ActionResult Admins()
+        {
+            if ((string)Session["Usertype"] == "Admin")
+            {
+               
+                
+                
+                return View(ur.GetAllAdmin("Admin")) ;
+            }
+
+
+            else
+            {
+                return RedirectToAction("index", "Login");
+
+            }
+        }
+
+
+
+
 
         [HttpGet]
         public ActionResult AddAdmin()
         {
-            return View();
+
+            if ((string)Session["Usertype"] == "Admin")
+            {
+                return View();
+            }
+
+
+            else
+            {
+                return RedirectToAction("index", "Login");
+
+           }
         }
 
         [HttpPost]
         public ActionResult AddAdmin(User user)
         {
-            
-            user.UserType = "Admin";
-            ur.Insert(user);
-            
+            if (ModelState.IsValid)
+            {
+                user.UserType = "Admin";
+                ur.Insert(user);
+
+                return RedirectToAction("Admins", "Admin");
+
+            }
+            else
+            {
+                return View();
+            }
+           
+        }
+
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            if ((string)Session["Usertype"] == "Admin")
+            {
+                return View(ur.Get(id));
+            }
+
+
+            else
+            {
+                return RedirectToAction("index", "Login");
+
+            }
+           
+        }
+
+        [HttpPost,ActionName("Delete")]
+        public ActionResult ConfirmDelete(int id)
+        {
+            ur.Delete(id);
+            return RedirectToAction("Admins","Admin");
+        }
+
+
+
+        [HttpGet]
+        public ActionResult AdminProfile()
+        {        
+
             return View();
         }
+
     }
 }

@@ -31,7 +31,7 @@ namespace Library.Controllers
 
                 BookRepository br = new BookRepository();
                 br.Insert(book);
-                return RedirectToAction("Index","Admin");
+                return Content("added");
             }
             else
             {

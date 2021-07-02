@@ -9,7 +9,7 @@ namespace Library.Models.Repository
     public class Repository<T> : IRepository<T> where T : class
     {
 
-        LibraryDBEntities context = new LibraryDBEntities();
+        DBEntities context = new DBEntities();
         public void Delete(int id)
         {
             this.context.Set<T>().Remove(Get(id));
