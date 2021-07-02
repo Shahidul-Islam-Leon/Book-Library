@@ -12,7 +12,6 @@ namespace Library.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Xunit;
 
     public partial class Book
     {
@@ -24,16 +23,17 @@ namespace Library.Models
     
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "*Book title can't be empty")]
+        [Required(ErrorMessage = "*book title can't be empty")]
         public string Title { get; set; }
 
-        [Required(ErrorMessage = "*Author can't be empty")]
+        [Required(ErrorMessage = "*author can't be empty")]
         public string Author { get; set; }
 
-        [Required(ErrorMessage = "*Book edition required")]
+        [Required(ErrorMessage = "*book edition required")]
         public string Edition { get; set; }
 
-        [Required(ErrorMessage = "*Book price required")]
+
+        [Required(ErrorMessage = "*book price required")]
         public double Price { get; set; }
         public string File { get; set; }
     

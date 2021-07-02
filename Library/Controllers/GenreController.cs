@@ -53,7 +53,7 @@ namespace Library.Controllers
             if (ModelState.IsValid)
             {
                 gr.Insert(genre);
-                return RedirectToAction("Genre", "Admin");
+                return RedirectToAction("Index", "Genre");
             }
             else
             {
@@ -62,6 +62,55 @@ namespace Library.Controllers
            
 
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            if ((string)Session["UserType"] == "Admin")
+            {
+
+                return View(gr.Get(id));
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+           
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Genre genre)
+        {
+            gr.Update(genre);
+            return RedirectToAction("Index","Genre");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            if ((string)Session["UserType"] == "Admin")
+            {
+
+                return View(gr.Get(id));
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            
+        }
+        [HttpPost,ActionName("Delete")]
+        public ActionResult ConfirmDelete(int id)
+        {
+
+
+            gr.Delete(id);
+            
+           return RedirectToAction("Index", "Genre");
+            
+
+        }
+
 
     }
 }

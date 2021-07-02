@@ -18,7 +18,7 @@ namespace Library.Models.Repository
 
         public T Get(int id)
         {
-           return this.context.Set<T>().Find();
+           return this.context.Set<T>().Find(id);
         }
 
         public List<T> GetALLData()

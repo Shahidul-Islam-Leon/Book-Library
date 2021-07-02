@@ -12,6 +12,7 @@ namespace Library.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class User
     {
@@ -23,29 +24,25 @@ namespace Library.Models
     
         public int Id { get; set; }
 
-
-        [Required(ErrorMessage ="*Username can't be empty"), MaxLength(26),
-         MinLength(4,ErrorMessage ="Username should be atleast 4 character")]
+        [Required(ErrorMessage = "*Username can't be empty"), MaxLength(26),
+        MinLength(4, ErrorMessage = "Username should be atleast 4 character")]
         public string Username { get; set; }
-
 
         [Required(ErrorMessage = "*Name can't be empty")]
         public string Name { get; set; }
         public string UserType { get; set; }
 
-
         [Required(ErrorMessage = "*Password required"),
-        MinLength(4,ErrorMessage ="Password should be atleast 4 character")]
+         MinLength(4, ErrorMessage = "Password should be atleast 4 character")]
         public string Password { get; set; }
 
-
-        [Required(ErrorMessage = "*Confirm Password required")][Compare("Password",ErrorMessage ="*Password doesn't match")]
+        [Required(ErrorMessage = "*Confirm Password required")]
+        [Compare("Password", ErrorMessage = "*Password doesn't match")]
+        [NotMapped]
         public string ConfirmPassword { get; set; }
-
 
         [Required(ErrorMessage = "*Email required")]
         public string Email { get; set; }
-
 
         [Required(ErrorMessage = "*Phone number required")]
         public string Phone { get; set; }

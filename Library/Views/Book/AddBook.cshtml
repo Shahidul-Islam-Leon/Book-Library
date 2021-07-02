@@ -8,7 +8,7 @@
                 <td>Title</td>
                 <td>
                     <input type="text" name="Title" placeholder="Book Title" value="" />
-                    
+
                 </td>
             </tr>
             <tr>
@@ -26,12 +26,12 @@
                 <td></td>
                 <td><span style="color:red">@Html.ValidationMessageFor(model => model.Author)</span></td>
             </tr>
-            
+
             <tr>
                 <td>Edition</td>
                 <td>
                     <input type="text" name="Edition" placeholder="Edition" value="" />
-                    
+
                 </td>
 
             </tr>
@@ -41,18 +41,24 @@
             </tr>
             <tr>
                 <td>Genre</td>
-                <td>
-                    <input type="checkbox" name="Genre" value="Action" /> Action <br />
-                    <input type="checkbox" name="Genre" value="Thriller" /> Thriller<br />
-                    <input type="checkbox" name="Genre" value="Romantic" /> Romantic
 
+
+                <td>
+                    @foreach (var item in ViewData["Genres"] as List<Library.Models.Genre>)
+
+                    {
+
+                        <input type="checkbox" name="Genre" value="@item.Id" />@item.GenreName <br />
+
+
+                    }
                 </td>
             </tr>
             <tr>
                 <td>Price</td>
                 <td>
                     <input type="text" name="Price" placeholder="Price" value="" />
-                    
+
                 </td>
             </tr>
             <tr>

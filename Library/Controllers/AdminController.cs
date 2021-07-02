@@ -37,10 +37,10 @@ namespace Library.Controllers
         {
             if ((string)Session["Usertype"] == "Admin")
             {
-               
-                
-                
-                return View(ur.GetAllAdmin("Admin")) ;
+
+
+
+                return View(ur.GetAllAdmin("Admin"));
             }
 
 
@@ -69,7 +69,7 @@ namespace Library.Controllers
             {
                 return RedirectToAction("index", "Login");
 
-           }
+            }
         }
 
         [HttpPost]
@@ -87,7 +87,7 @@ namespace Library.Controllers
             {
                 return View();
             }
-           
+
         }
 
 
@@ -105,24 +105,78 @@ namespace Library.Controllers
                 return RedirectToAction("index", "Login");
 
             }
-           
+
         }
 
-        [HttpPost,ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         public ActionResult ConfirmDelete(int id)
         {
             ur.Delete(id);
-            return RedirectToAction("Admins","Admin");
+            return RedirectToAction("Admins", "Admin");
         }
 
 
 
         [HttpGet]
-        public ActionResult AdminProfile()
-        {        
+        public ActionResult AdminProfile(int id)
+        {
+            if ((string)Session["Usertype"] == "Admin")
+            {
+               // var users = ur.GetALLData();
+                // return View(users.Find(x => x.Id == 2));
 
-            return View();
+
+                return View(ur.Get(id));
+
+
+            }
+
+
+            else
+            {
+                return RedirectToAction("index", "Login");
+
+            }
+
+
+
+
         }
 
+        //[HttpGet]
+        //public ActionResult Edit(int id)
+        //{
+        //    if ((string)Session["Usertype"] == "Admin")
+        //    {
+        //        ViewData["Users"] = ur.GetALLData();
+        //        return View(ur.Get(id));
+        //    }
+
+        //    else
+        //    {
+        //        return RedirectToAction("index", "Login");
+
+        //    }
+        //}
+
+
+        [HttpPost]
+        public ActionResult AdminProfile(User user)
+        {
+            using (UserRepository userRepo = new UserRepository())
+            {
+                var u = userRepo.Get(user.Id);
+                user.UserType = u.UserType;
+                user.ConfirmPassword = user.Password;
+
+            }
+
+         
+            
+
+            ur.Update(user);
+            return RedirectToAction("Index", "Admin");
+
+        }
     }
 }

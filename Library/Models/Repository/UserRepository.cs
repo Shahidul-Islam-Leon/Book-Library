@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Library.Models.Repository
 {
-    public class UserRepository : Repository<User>
+    public class UserRepository : Repository<User>,IDisposable
     {
 
         DBEntities context = new DBEntities();
@@ -22,5 +22,9 @@ namespace Library.Models.Repository
 
         }
 
+        public void Dispose()
+        {
+            context.Dispose();
+        }
     }
 }

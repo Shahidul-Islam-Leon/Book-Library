@@ -28,6 +28,7 @@ namespace Library.Controllers
             {
                 Session["UserType"] = checkedUser.UserType;
                 Session["Username"] = checkedUser.Username;
+                Session["Id"] = checkedUser.Id;
 
                 if ((string)Session["UserType"] == "Admin")
                 {

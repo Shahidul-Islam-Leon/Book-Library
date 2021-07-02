@@ -1,4 +1,100 @@
-﻿
-    <div> 
-    </div>
+﻿@model Library.Models.User
 
+
+  
+<div>
+    <form action="" method="post">
+        <table>
+            <tr>
+
+                <td>Username</td>
+                <td>
+                    @Html.TextBoxFor(model => model.Username)
+                </td>
+            <tr>
+                <td></td>
+                <td>
+                    <span style="color:red">@Html.ValidationMessageFor(model => model.Username)</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>Name</td>
+                <td>
+                    @Html.TextBoxFor(model => model.Name)
+
+                </td>
+
+
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span style="color:red">@Html.ValidationMessageFor(model => model.Name)</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td>
+                    @Html.TextBoxFor(model => model.Email)
+
+                </td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span style="color:red">@Html.ValidationMessageFor(model => model.Email)</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Password</td>
+                <td>
+                    @Html.TextBoxFor(model => model.Password)
+                </td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span style="color:red">@Html.ValidationMessageFor(model => model.Password)</span>
+                </td>
+            </tr>
+
+           
+            <tr>
+                <td></td>
+                <td>
+                    <span style="color:red">@Html.ValidationMessageFor(model => model.ConfirmPassword)</span>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td>Phone</td>
+                <td>
+                    @Html.TextBoxFor(model => model.Phone)
+                </td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span style="color:red">@Html.ValidationMessageFor(model => model.Phone)</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right" colspan="2">
+                    <input type="submit" value="Edit Profile" />
+                </td>
+
+            </tr>
+            
+        </table>
+    </form>
+</div>

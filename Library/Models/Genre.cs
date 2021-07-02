@@ -20,9 +20,10 @@ namespace Library.Models
         {
             this.Books = new HashSet<Book>();
         }
-    
+       
         public int Id { get; set; }
-        [Required(ErrorMessage ="Genre name required")]
+
+        [Required(ErrorMessage = "Genre name required")]
         public string GenreName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

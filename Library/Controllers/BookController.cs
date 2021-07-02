@@ -8,20 +8,46 @@ using System.Web.Mvc;
 
 namespace Library.Controllers
 {
+    
     public class BookController : Controller
     {
+        
+        BookRepository br = new BookRepository();
         // GET: Book
         public ActionResult Index()
+
         {
-            return View();
+            if ((string)Session["UserType"] == "Admin")
+            {
+
+                return View(br.GetALLData());
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            
         }
 
         [HttpGet]
         public ActionResult AddBook()
+            
         {
-            return View();
+
+            if ((string)Session["UserType"] == "Admin")
+            {
+                GenreRepository gr = new GenreRepository();
+                ViewData["Genres"] = gr.GetALLData();
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+           
         }
         
+        [HttpPost]
         public ActionResult AddBook(Book book)
         {
 
@@ -31,13 +57,73 @@ namespace Library.Controllers
 
                 BookRepository br = new BookRepository();
                 br.Insert(book);
-                return Content("added");
+                return RedirectToAction("Index","Book");
             }
             else
             {
                 return View();
             }
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+
+        {
+
+            if ((string)Session["UserType"] == "Admin")
+            {
+                
+                return View(br.Get(id));
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+        }
+
+
+        [HttpPost]
+        public ActionResult Edit(Book book)
+
+        {
+
+            br.Update(book);
+            return RedirectToAction("Index", "Book");
+            
+
+        }
+
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+
+        {
+
+            if ((string)Session["UserType"] == "Admin")
+            {
+
+                return View(br.Get(id));
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+        }
+
+        [HttpPost,ActionName("Delete")]
+        public ActionResult ConfirmDelete(int id)
+
+        {
+
+            br.Delete(id);
+            return RedirectToAction("Index", "Book");
+
+
+        }
+
+
 
     }
 }
