@@ -16,8 +16,8 @@ namespace Library.Models
     {
         public int Id { get; set; }
         public string Path { get; set; }
-        public string FileType { get; set; }
         public int UserId { get; set; }
+        public byte[] ImageData { get; set; }
     
         public virtual User User { get; set; }
     }

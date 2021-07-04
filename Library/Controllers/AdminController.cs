@@ -143,21 +143,7 @@ namespace Library.Controllers
 
         }
 
-        //[HttpGet]
-        //public ActionResult Edit(int id)
-        //{
-        //    if ((string)Session["Usertype"] == "Admin")
-        //    {
-        //        ViewData["Users"] = ur.GetALLData();
-        //        return View(ur.Get(id));
-        //    }
-
-        //    else
-        //    {
-        //        return RedirectToAction("index", "Login");
-
-        //    }
-        //}
+        
 
 
         [HttpPost]
@@ -169,10 +155,7 @@ namespace Library.Controllers
                 user.UserType = u.UserType;
                 user.ConfirmPassword = user.Password;
 
-            }
-
-         
-            
+            }          
 
             ur.Update(user);
             return RedirectToAction("Index", "Admin");

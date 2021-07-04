@@ -20,7 +20,7 @@ namespace Library.Models
         {
             this.Books = new HashSet<Book>();
         }
-       
+    
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Genre name required")]

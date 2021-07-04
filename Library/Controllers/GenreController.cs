@@ -10,7 +10,7 @@ namespace Library.Controllers
 {
     public class GenreController : Controller
     {
-        GenreRepository gr = new GenreRepository();
+        GenreRepository gr = new GenreRepository ();
         // GET: Genre
         [HttpGet]
         public ActionResult Index()
@@ -110,6 +110,7 @@ namespace Library.Controllers
             
 
         }
+        
 
 
     }

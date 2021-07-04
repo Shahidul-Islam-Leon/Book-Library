@@ -14,7 +14,8 @@
           <Property Name="Author" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Edition" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="float" Nullable="false" />
-          <Property Name="File" Type="varchar(max)" Nullable="false" />
+          <Property Name="PdfName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BookData" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Books_Genres">
           <Key>
@@ -37,7 +38,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Path" Type="varchar(max)" Nullable="false" />
-          <Property Name="FileType" Type="varchar(max)" />
+          <Property Name="ImageData" Type="varbinary(max)" />
           <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
@@ -120,8 +121,9 @@
           <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Edition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Price" Type="Double" Nullable="false" />
-          <Property Name="File" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Genres" Relationship="Self.Books_Genres" FromRole="Books" ToRole="Genres" />
+          <Property Name="PdfName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookData" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Genre">
           <Key>
@@ -137,9 +139,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FileType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Images_Users" FromRole="Images" ToRole="Users" />
+          <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -193,12 +195,13 @@
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="LibraryDBModel.Book">
               <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="BookData" ColumnName="BookData" />
+                <ScalarProperty Name="PdfName" ColumnName="PdfName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Author" ColumnName="Author" />
                 <ScalarProperty Name="Edition" ColumnName="Edition" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="File" ColumnName="File" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -213,9 +216,9 @@
           <EntitySetMapping Name="Images">
             <EntityTypeMapping TypeName="LibraryDBModel.Image">
               <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="ImageData" ColumnName="ImageData" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Path" ColumnName="Path" />
-                <ScalarProperty Name="FileType" ColumnName="FileType" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>

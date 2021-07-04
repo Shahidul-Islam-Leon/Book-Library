@@ -32,10 +32,10 @@ namespace Library.Models
         [Required(ErrorMessage = "*book edition required")]
         public string Edition { get; set; }
 
-
         [Required(ErrorMessage = "*book price required")]
         public double Price { get; set; }
-        public string File { get; set; }
+        public string PdfName { get; set; }
+        public byte[] BookData { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Genre> Genres { get; set; }

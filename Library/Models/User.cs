@@ -21,7 +21,7 @@ namespace Library.Models
         {
             this.Images = new HashSet<Image>();
         }
-    
+
         public int Id { get; set; }
 
         [Required(ErrorMessage = "*Username can't be empty"), MaxLength(26),
@@ -46,7 +46,7 @@ namespace Library.Models
 
         [Required(ErrorMessage = "*Phone number required")]
         public string Phone { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }
     }
