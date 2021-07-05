@@ -14,7 +14,7 @@ namespace Library.Controllers
             Session.Clear();
             
             Session.Abandon();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Login");
             
         }
     }

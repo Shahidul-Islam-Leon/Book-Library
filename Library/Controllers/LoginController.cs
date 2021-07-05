@@ -38,7 +38,7 @@ namespace Library.Controllers
 
                 else if ((string)Session["UserType"] == "Customer")
                 {
-                    return RedirectToAction("Index", "User");
+                    return RedirectToAction("Index", "Customer");
                 }
 
             }

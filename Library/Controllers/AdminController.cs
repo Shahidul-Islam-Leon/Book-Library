@@ -122,8 +122,7 @@ namespace Library.Controllers
         {
             if ((string)Session["Usertype"] == "Admin")
             {
-               // var users = ur.GetALLData();
-                // return View(users.Find(x => x.Id == 2));
+               
 
 
                 return View(ur.Get(id));

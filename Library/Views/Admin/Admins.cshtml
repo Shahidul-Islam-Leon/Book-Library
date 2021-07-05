@@ -1,32 +1,36 @@
-﻿@model IEnumerable<Library.Models.User>
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model IEnumerable<Library.Models.User>
 
 
 
 <a href="/Admin/AddAdmin"><h3>Add Admin</h3></a>
-    <table class="table"border="1">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
+<table class="table table-striped table-dark ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Username)
@@ -47,9 +51,9 @@
                 @Html.DisplayFor(modelItem => item.Phone)
             </td>
             <td>
-                <h5> @Html.ActionLink("Remove", "Remove", new { id = item.Id })</h5>
+                <h5> @Html.ActionLink("Remove", "Delete", new { id = item.Id })</h5>
             </td>
         </tr>
     }
-    
-    </table>
+
+</table>

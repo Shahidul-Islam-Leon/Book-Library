@@ -1,108 +1,53 @@
 ﻿@model Library.Models.User
-<div>
-    <form action="" method="post">
 
-        <table align="center">
-            <tr>
-                <td>Username</td>
-                <td>
-                    <input type="text" name="Username" placeholder="Username" value="" />
-                </td>
-            <tr>
-                <td></td>
-                <td>
-                    <span style="color:red">@Html.ValidationMessageFor(model => model.Username)</span>
-                </td>
-            </tr>
-            
+<div class="d-flex justify-content-center mt-4">
+    <div class="col-md-4 card ">
+        <form action="" method="post">
 
-            <tr>
-                <td>Name</td>
-                <td>
-                    <input type="text" name="Name" placeholder="Name" value="" />
+            <div class="form-group">
+                <label for="Username">Username</label>
+                <input type="text" class="form-control" name="Username" placeholder="Enter Username">
+                <span style="color:red">@Html.ValidationMessageFor(model => model.Username)</span>
+            </div>
 
-                </td>
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input type="text" class="form-control" name="Name" placeholder="Enter Name">
+                <span style="color:red">@Html.ValidationMessageFor(model => model.Name)</span>
+            </div>
 
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="Email" class="form-control" name="Email" placeholder="Enter Email">
+                <span style="color:red">@Html.ValidationMessageFor(model => model.Email)</span>
+            </div>
 
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <span style="color:red">@Html.ValidationMessageFor(model => model.Name)</span>
-                </td>
-            </tr>
+            <div class="form-group">
+                <label for="Phone">Phone Number</label>
+                <input type="text" class="form-control" name="Username" placeholder="Enter Phone number">
+                <span style="color:red">@Html.ValidationMessageFor(model => model.Phone)</span>
+            </div>
 
-            <tr>
-                <td>Email</td>
-                <td>
-                    <input type="email" name="Email" placeholder="Email" value="" />
-                </td>
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input type="password" class="form-control" name="Password" placeholder="Enter Password">
+                <span style="color:red">@Html.ValidationMessageFor(model => model.Password)</span>
+            </div>
 
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <span style="color:red">@Html.ValidationMessageFor(model => model.Email)</span>
-                </td>
-            </tr>
+            <div class="form-group">
+                <label for="ConfirmPassword">ConfirmPassword</label>
+                <input type="password" class="form-control" name="ConfirmPassword" placeholder="Enter ConfirmPassword">
+                <span style="color:red">@Html.ValidationMessageFor(model => model.ConfirmPassword)</span>
+            </div>
 
-            <tr>
-                <td>Password</td>
-                <td>
-                    <input type="password" name="Password" placeholder="Password" value="" />
-                </td>
+            <button type="submit" class="btn btn-primary">Log in</button>
+        </form>
 
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <span style="color:red">@Html.ValidationMessageFor(model => model.Password)</span>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Confirm Password</td>
-                <td>
-                    <input type="password" name="ConfirmPassword" placeholder="Confirm Password" value="" />
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <span style="color:red">@Html.ValidationMessageFor(model => model.ConfirmPassword)</span>
-                </td>
-            </tr>
+        <span style="color:#4cff00">Already registered? </span><a href="../login/index">Go to login</a>
 
 
 
-            <tr>
-                <td>Phone</td>
-                <td>
-                    <input type="text" name="Phone" placeholder="Phone Number" value="" />
-                </td>
 
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <span style="color:red">@Html.ValidationMessageFor(model => model.Phone)</span>
-                </td>
-            </tr>
+    </div>
 
-            <tr>
-                <td align="right" colspan="2">
-                    <input type="submit" value="Register" />
-                </td>
-
-            </tr>
-            <tr>
-                <td colspan="2" align="right"> <span style="color:#4cff00">Already registered? </span><a href="../login/index">Go to login</a></td>
-            </tr>
-
-
-
-        </table>
-
-    </form>
 </div>
-

@@ -1,40 +1,25 @@
 ﻿
+
+
 @model Library.Models.User
 <div>
     <form action="" method="post">
-
-        <table align="center">
-            <tr>
-                <td>
-                    Username
-                </td>
-                <td>
-                    <input type="text" name="Username" placeholder="Usename" value="" /> <br />
-                    <span style="color:red">@Html.ValidationMessageFor(model => model.Username)</span>
-                </td>
-
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td>
-                    <input type="password" name="Password" placeholder="Password" value="" />
-                    <br /> <span style="color:red">@Html.ValidationMessageFor(model => model.Password)</span>
-                    <span style="color:red;">@TempData["error"]</span>
-                </td>
-
-                
-            </tr>
-
-            <tr>
-                <td align="right" colspan="2">
-                    <input type="submit" value="Login" />
-                </td>
-
-            </tr>
-            <tr>
-                <td colspan="2" align="right"><span style="color:green">New here?</span><a href="../User/Registration">Go to registration</a></td>
-            </tr>
-        </table>
-
-    </form>
+        <div class="form-group">
+            <label for="Username">Username</label>
+            <input type="text" class="form-control" name="Username" placeholder="Enter Username">
+            <span style="color:red">@Html.ValidationMessageFor(model => model.Username)</span>
+        </div>
+        <div class="form-group">
+            <label for="Password">Password</label>
+            <input type="password" class="form-control" name="Password" placeholder="Enter Password">
+            <span style="color:red">@Html.ValidationMessageFor(model => model.Password)</span>
+            <span style="color:red;">@TempData["error"]</span>
+        </div>
+            
+            <button type="submit" class="btn btn-primary">Log in</button>
+        </form>
+        
+        <span style="color:green">New here?</span><a href="../User/Registration">Go to registration</a>
+          
+    
 </div>
