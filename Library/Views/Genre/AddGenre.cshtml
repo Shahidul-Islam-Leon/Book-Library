@@ -3,21 +3,18 @@
 }
 
 @model Library.Models.Genre
-<div>
-    <form action="" method="post">
-        <table>
-            <tr>
-                <td>Genre Name</td>
-                <td><input type="text" name="GenreName" value="" /></td>
-                <td>
-                    <span style="color:red">@Html.ValidationMessageFor(model => model.GenreName)</span>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td align="right"><input type="submit" name="Submit" value="Add" /></td>
+<div class="d-flex justify-content-center mt-4">
+    <div class="col-md-4 card ">
+        <form action="" method="post">
 
-            </tr>
-        </table>
-    </form>
+            <div class="form-group">
+                <label for="GenreName">Genre</label>
+                <input type="text" class="form-control" name="GenreName" placeholder="Enter Genre">
+                <span style="color:red">@Html.ValidationMessageFor(model => model.GenreName)</span>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+
+        </form>
+    </div>
+
 </div>

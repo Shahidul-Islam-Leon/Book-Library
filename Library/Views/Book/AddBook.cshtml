@@ -4,85 +4,56 @@
 
 @model Library.Models.Book
 
+<div class="d-flex justify-content-center mt-4">
+    <div class="col-md-4 card ">
+        <form action="" method="post" enctype="multipart/form-data">
 
-<div>
-    <form action="" method="post" enctype="multipart/form-data">
-        <table>
-            <tr>
-                <td>Title</td>
-                <td>
-                    <input type="text" name="Title" placeholder="Book Title" value="" />
+            <div class="form-group">
+                <label for="Title">Title</label>
+                <input type="text" class="form-control" name="Title" placeholder="Enter Genre">
+                <span style="color:red">@Html.ValidationMessageFor(model => model.Title)</span>
+            </div>
 
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><span style="color:red">@Html.ValidationMessageFor(model => model.Title)</span></td>
-            </tr>
-            <tr>
-                <td>Author</td>
-                <td>
-                    <input type="text" name="Author" placeholder="Author Name" value="" />
+            <div class="form-group">
+                <label for="Author">Author</label>
+                <input type="text" class="form-control" name="Author" placeholder="Enter author name">
+                <span style="color:red">@Html.ValidationMessageFor(model => model.Author)</span>
+            </div>
+            <div class="form-group">
+                <label for="Edition">Edition</label>
+                <input type="text" class="form-control" name="Edition" placeholder="Enter Edition">
+                <span style="color:red">@Html.ValidationMessageFor(model => model.Edition)</span>
+            </div>
 
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><span style="color:red">@Html.ValidationMessageFor(model => model.Author)</span></td>
-            </tr>
+            <div class="form-group">
+                <label for="Genre">Genre</label>
+                @foreach (var item in ViewData["Genres"] as List<Library.Models.Genre>)
 
-            <tr>
-                <td>Edition</td>
-                <td>
-                    <input type="text" name="Edition" placeholder="Edition" value="" />
+                {
 
-                </td>
+                    <input type="checkbox"  name="Genre" value="@item.Id" />@item.GenreName <br />
 
-            </tr>
-            <tr>
-                <td></td>
-                <td><span style="color:red">@Html.ValidationMessageFor(model => model.Edition)</span></td>
-            </tr>
-            <tr>
-                <td>Genre</td>
+                }
+            </div>
 
+            <div class="form-group">
+                <label for="Price">Price</label>
+                <input type="text" class="form-control" name="Price" placeholder="Enter Price">
+                <span style="color:red">@Html.ValidationMessageFor(model => model.Price)</span>
+            </div>
+            <div class="form-group">
+                <label for="Upload file">Upload file</label>
+                <input type="file"  name="postedFile">
+                <span style="color:red">@Html.ValidationMessageFor(model => model.BookData)</span>
+            </div>
 
-                <td>
-                    @foreach (var item in ViewData["Genres"] as List<Library.Models.Genre>)
+            <button type="submit" class="btn btn-primary">Add</button>
 
-                    {
+        </form>
+    </div>
 
-                        <input type="checkbox" name="Genre" value="@item.Id" />@item.GenreName <br />
-
-
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td>Price</td>
-                <td>
-                    <input type="text" name="Price" placeholder="Price" value="" />
-
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><span style="color:red">@Html.ValidationMessageFor(model => model.Price)</span></td>
-            </tr>
-            <tr>
-            <tr>
-                <td>Upload file</td>
-                <td>
-                    <input type="file" name="postedFile" value="" />
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td> <span style="color:red">@Html.ValidationMessageFor(model => model.BookData)</span></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center"><input type="submit" name="Submit" value="Add" /></td>
-            </tr>
-        </table>
-    </form>
 </div>
+
+
+
+

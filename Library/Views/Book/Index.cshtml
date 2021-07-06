@@ -6,7 +6,7 @@
 
 <a href="~/Book/AddBook"><h3>AddBook</h3></a>
 
-<table class="table" border="1">
+<table class="table table-striped table-dark">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -45,8 +45,10 @@
                 @Html.DisplayFor(modelItem => item.PdfName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                <h5>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </h5>
             </td>
         </tr>
     }

@@ -2,24 +2,28 @@
 
 
 @model Library.Models.User
-<div>
-    <form action="" method="post">
-        <div class="form-group">
-            <label for="Username">Username</label>
-            <input type="text" class="form-control" name="Username" placeholder="Enter Username">
-            <span style="color:red">@Html.ValidationMessageFor(model => model.Username)</span>
-        </div>
-        <div class="form-group">
-            <label for="Password">Password</label>
-            <input type="password" class="form-control" name="Password" placeholder="Enter Password">
-            <span style="color:red">@Html.ValidationMessageFor(model => model.Password)</span>
-            <span style="color:red;">@TempData["error"]</span>
-        </div>
-            
-            <button type="submit" class="btn btn-primary">Log in</button>
-        </form>
+
+<div class="d-flex justify-content-center mt-4">
+    <div class="col-md-4 card ">
         
-        <span style="color:green">New here?</span><a href="../User/Registration">Go to registration</a>
-          
-    
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="Username">Username</label>
+                    <input type="text" class="form-control" name="Username" placeholder="Enter Username">
+                    <span style="color:red">@Html.ValidationMessageFor(model => model.Username)</span>
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" class="form-control" name="Password" placeholder="Enter Password">
+                    <span style="color:red">@Html.ValidationMessageFor(model => model.Password)</span>
+                    <span style="color:red;">@TempData["error"]</span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Log in</button>
+            </form>
+
+            <span style="color:green">New here?<a href="../User/Registration">Go to registration</a></span>
+
+
+        </div>
 </div>

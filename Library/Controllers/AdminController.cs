@@ -37,9 +37,6 @@ namespace Library.Controllers
         {
             if ((string)Session["Usertype"] == "Admin")
             {
-
-
-
                 return View(ur.GetAllAdmin("Admin"));
             }
 
@@ -122,7 +119,7 @@ namespace Library.Controllers
         {
             if ((string)Session["Usertype"] == "Admin")
             {
-               
+
 
 
                 return View(ur.Get(id));
@@ -142,7 +139,7 @@ namespace Library.Controllers
 
         }
 
-        
+
 
 
         [HttpPost]
@@ -154,10 +151,36 @@ namespace Library.Controllers
                 user.UserType = u.UserType;
                 user.ConfirmPassword = user.Password;
 
-            }          
+            }
 
             ur.Update(user);
             return RedirectToAction("Index", "Admin");
+
+        }
+
+
+
+
+
+        [HttpGet]
+        public ActionResult AProfile(int id)
+        {
+            if ((string)Session["Usertype"] == "Admin")
+            {
+
+
+
+                return View(ur.Get(id));
+
+
+            }
+
+
+            else
+            {
+                return RedirectToAction("index", "Login");
+
+            }
 
         }
     }
