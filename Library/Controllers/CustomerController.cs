@@ -12,6 +12,8 @@ namespace Library.Controllers
     {
         // GET: Customer
         UserRepository ur = new UserRepository();
+        BookRepository br = new BookRepository();
+
 
         [HttpGet]
         public ActionResult Index()
@@ -70,5 +72,97 @@ namespace Library.Controllers
             return RedirectToAction("Index", "Customer");
 
         }
+
+
+
+        [HttpGet]
+        public ActionResult CProfile(int id)
+        {
+            if ((string)Session["Usertype"] == "Customer")
+            {
+
+
+
+                return View(ur.Get(id));
+
+
+            }
+
+
+            else
+            {
+                return RedirectToAction("index", "Login");
+
+            }
+
+        }
+
+        [HttpGet]
+        public ActionResult ChangePass()
+        {
+            if ((string)Session["Usertype"] == "Customer")
+            {
+
+                return View();
+            }
+
+            else
+            {
+                return RedirectToAction("index", "Login");
+
+            }
+
+        }
+
+
+
+        [HttpGet]
+        public ActionResult Allbook()
+
+        {
+            if ((string)Session["UserType"] == "Customer")
+            {
+
+                return View(br.GetALLData());
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+        }
+
+
+        [HttpGet]
+        public ActionResult BookDetails(int id)
+
+        {
+
+
+            if ((string)Session["UserType"] == "Customer")
+            {
+                return View(br.Get(id));
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+        }
+
+        [HttpGet]
+        public FileResult BookDownload(int id)
+        {
+            DBEntities context = new DBEntities();
+
+            var FileById = (from item in context.Books
+                            where item.Id.Equals(id)
+                            select new { item.PdfName, item.BookData }).ToList().FirstOrDefault();
+            return File(FileById.BookData, "application/pdf", FileById.PdfName);
+
+        }
+
     }
+
 }
+

@@ -9,10 +9,10 @@ using System.Web.Mvc;
 
 namespace Library.Controllers
 {
-    
+
     public class BookController : Controller
     {
-        
+
         BookRepository br = new BookRepository();
         // GET: Book
         public ActionResult Index()
@@ -27,52 +27,9 @@ namespace Library.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
-            
+
         }
 
-        [HttpGet]
-        public ActionResult AddBook()
-            
-        {
-
-            if ((string)Session["UserType"] == "Admin")
-            {
-                GenreRepository gr = new GenreRepository();
-                ViewData["Genres"] = gr.GetALLData();
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Index", "Login");
-            }
-           
-        }
-        
-        [HttpPost]
-        public ActionResult AddBook(Book book, HttpPostedFileBase postedFile)
-        {
-
-            if (ModelState.IsValid)
-            {
-                BookRepository br = new BookRepository();
-
-                byte[] bytes;
-                using (BinaryReader breader = new BinaryReader(postedFile.InputStream))
-                {
-                    bytes = breader.ReadBytes(postedFile.ContentLength);
-                }
-
-                book.PdfName = Path.GetFileName(postedFile.FileName);
-                book.BookData = bytes;
-
-                br.Insert(book);
-                return RedirectToAction("Index","Book");
-            }
-            else
-            {
-                return View();
-            }
-        }
 
         [HttpGet]
         public ActionResult Edit(int id)
@@ -81,7 +38,7 @@ namespace Library.Controllers
 
             if ((string)Session["UserType"] == "Admin")
             {
-                
+
                 return View(br.Get(id));
             }
             else
@@ -99,7 +56,7 @@ namespace Library.Controllers
 
             br.Update(book);
             return RedirectToAction("Index", "Book");
-            
+
 
         }
 
@@ -121,7 +78,7 @@ namespace Library.Controllers
 
         }
 
-        [HttpPost,ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         public ActionResult ConfirmDelete(int id)
 
         {
@@ -133,6 +90,49 @@ namespace Library.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult AddBook()
+
+        {
+
+            if ((string)Session["UserType"] == "Admin")
+            {
+                GenreRepository gr = new GenreRepository();
+                ViewData["Genres"] = gr.GetALLData();
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult AddBook(Book book, HttpPostedFileBase postedFile)
+        {
+
+            if (ModelState.IsValid)
+            {
+                BookRepository br = new BookRepository();
+
+                byte[] bytes;
+                using (BinaryReader breader = new BinaryReader(postedFile.InputStream))
+                {
+                    bytes = breader.ReadBytes(postedFile.ContentLength);
+                }
+
+                book.PdfName = Path.GetFileName(postedFile.FileName);
+                book.BookData = bytes;
+
+                br.Insert(book);
+                return RedirectToAction("Index", "Book");
+            }
+            else
+            {
+                return View();
+            }
+        }
 
     }
 }

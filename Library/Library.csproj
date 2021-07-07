@@ -253,6 +253,10 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Shared\_CusLayout.cshtml" />
     <Content Include="Views\Shared\_CusNavbar.cshtml" />
+    <Content Include="Views\Customer\CProfile.cshtml" />
+    <Content Include="Views\Customer\ChangePass.cshtml" />
+    <Content Include="Views\Customer\Allbook.cshtml" />
+    <Content Include="Views\Customer\BookDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

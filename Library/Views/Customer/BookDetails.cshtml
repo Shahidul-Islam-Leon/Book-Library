@@ -1,0 +1,55 @@
+﻿@model Library.Models.Book
+
+
+@{
+    Layout = "~/Views/Shared/_CusLayout.cshtml";
+}
+<div>
+    <h4>Book</h4>
+    <hr />
+    <table class="table">
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Title)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Title)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Author)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Author)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Edition)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Edition)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Price)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Price)
+            </td>
+        </tr>
+    </table>
+    <a href="BookDownload/Book">Download</a>
+</div>
+<p>
+
+    @Html.ActionLink("Back to List", "Index")
+</p>
