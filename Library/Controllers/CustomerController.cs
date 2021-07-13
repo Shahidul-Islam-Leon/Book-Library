@@ -201,7 +201,7 @@ namespace Library.Controllers
 
 
         [HttpPost]
-        public ActionResult profilePicture(Image image, HttpPostedFileBase postedImage)
+        public ActionResult ProfilePicture(Image image, HttpPostedFileBase postedImage)
         {
 
             if (ModelState.IsValid)
@@ -213,14 +213,27 @@ namespace Library.Controllers
                     bytes = breader.ReadBytes(postedImage.ContentLength);
                 }
 
-                image.Name = Path.GetFileName(postedImage.FileName);
-                image.ImageData = bytes;
+
+                // get imageFromDB by userID
 
 
-                image.UserId = (int)Session["ID"];
 
-                ir.Insert(image);
-                return RedirectToAction("CProfile", "Customer");
+                if (true)// if imageFromDB is null the insert
+                {
+                    image.Name = Path.GetFileName(postedImage.FileName);
+                    image.ImageData = bytes;
+
+
+                    image.UserId = (int)Session["ID"];
+
+                    ir.Insert(image);
+                }
+                else // else Update
+                {
+
+                }
+
+                return RedirectToAction("CProfile", "Customer", new { id = (int)Session["ID"] });
             }
             else
             {
@@ -228,19 +241,7 @@ namespace Library.Controllers
             }
         }
 
-        //[HttpGet]
-        //public ActionResult profilerender(int id)
-        //{
-        //    image.Userid = (int)Session["id"];
-
-        //    var getimage = ir.Get(image.id);
-        //    image.imagedata = getimage.ImageData;
-
-        //    var g = ir.Get(id);
-
-        //    return View(g);
-        //}
-
+       
 
 
 

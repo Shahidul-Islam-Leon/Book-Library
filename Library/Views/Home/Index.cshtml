@@ -4,7 +4,7 @@
 
     @foreach (var image in ViewBag.Images)
     {
-        <img src="~/Images/@Path.GetFileName(image)" height="1080" width="1920"/>
+        <img class="img-fluid" src="~/Images/@Path.GetFileName(image)" height="1080" width="1920"/>
     }
 </div>
 

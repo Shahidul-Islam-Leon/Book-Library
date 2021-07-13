@@ -13,46 +13,62 @@
 
     <a href="~/Customer/ProfilePicture">Upload Profile picture</a>
   
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-striped table-hover table table-striped w-auto .table-fixed">
+                <tr>
 
-    <table class="table table-striped table-hover table table-striped w-auto .table-fixed">
-        <tr>
+                    <td>
+                        Username
+                    </td>
 
-            <td>
-                Username
-            </td>
+                    <td>
+                        @Model.Username
+                    </td>
+                <tr>
 
-            <td>
-                @Model.Username
-            </td>
-        <tr>
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        @Model.Name
 
-        <tr>
-            <td>Name</td>
-            <td>
-                @Model.Name
+                    </td>
 
-            </td>
-
-        </tr>
-
-
-        <tr>
-            <td>Email</td>
-            <td>
-                @Model.Email)
-
-            </td>
-
-        </tr>
+                </tr>
 
 
-        <tr>
-            <td>Phone</td>
-            <td>
-                @Model.Phone)
-            </td>
+                <tr>
+                    <td>Email</td>
+                    <td>
+                        @Model.Email)
 
-    </table>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+                    <td>Phone</td>
+                    <td>
+                        @Model.Phone
+                    </td>
+
+            </table>
+        </div>
+        <div class="col-md-6">
+            @if (Model.Images.FirstOrDefault() != null)
+            {
+                <img src="data:image;base64,@System.Convert.ToBase64String(Model.Images.FirstOrDefault().ImageData)" alt="Alternate Text" />
+            }
+            else
+            {
+                <img src="~/Images/no-profile.svg" alt="Alternate Text" height="320" width="320" />
+            }
+
+
+        </div>
+    </div>
+
     <a href="~/Customer/CustomerProfile/@Session["Id"]">Edit profile &nbsp</a>
     <a href="~/Customer/ChangePass/@Session["Id"]">Change Password</a>
     
