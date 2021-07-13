@@ -62,8 +62,8 @@ namespace Library.Controllers
         {
             using (UserRepository ur = new UserRepository())
             {
-                var u = ur.Get(user.Id);
-                user.UserType = u.UserType;
+                var getUser = ur.Get(user.Id);
+                user.UserType = getUser.UserType;
 
 
             }
@@ -216,9 +216,10 @@ namespace Library.Controllers
 
                 // get imageFromDB by userID
 
+                var getImageData = ir.Get(image.UserId);
+                
 
-
-                if (true)// if imageFromDB is null the insert
+                if (getImageData==null)// if imageFromDB is null the insert
                 {
                     image.Name = Path.GetFileName(postedImage.FileName);
                     image.ImageData = bytes;
@@ -231,6 +232,7 @@ namespace Library.Controllers
                 else // else Update
                 {
 
+                    ir.Update(image);
                 }
 
                 return RedirectToAction("CProfile", "Customer", new { id = (int)Session["ID"] });

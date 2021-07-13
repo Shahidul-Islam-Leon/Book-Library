@@ -1,7 +1,7 @@
 ﻿
 <div>
     <nav class="navbar navbar-expand-md navbar-dark bg-success">
-        <a href="#" class="navbar-brand">Brand</a>
+       <h2   class="navbar-brand">Book Library</h2></>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -9,9 +9,9 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
                 <a href="~/Customer/index" class="nav-item nav-link active">Home</a>
-               @* <a href="~/Admin/Admins" class="nav-item nav-link active">Admin</a>*@
+               
                 <a href="~/Customer/Allbook" class="nav-item nav-link active">Book</a>
-               @* <a href="~/Genre/Index" class="nav-item nav-link active">Genre</a>*@
+              
                 <a href="~/Customer/CProfile/@Session["Id"]" class="nav-item nav-link active">Profile</a>               
             </div>
             <h5 style="color:aquamarine" class="form-inline ml-auto">Welcome,</h5><h5 style="color:chartreuse">@Session["Username"]</h5>
