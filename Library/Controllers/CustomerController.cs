@@ -2,6 +2,7 @@
 using Library.Models.Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +14,8 @@ namespace Library.Controllers
         // GET: Customer
         UserRepository ur = new UserRepository();
         BookRepository br = new BookRepository();
+
+        ImageRepository ir = new ImageRepository();
 
 
         [HttpGet]
@@ -40,10 +43,7 @@ namespace Library.Controllers
             if ((string)Session["Usertype"] == "Customer")
             {
 
-
-
                 return View(ur.Get(id));
-
 
             }
 
@@ -60,11 +60,11 @@ namespace Library.Controllers
         [HttpPost]
         public ActionResult CustomerProfile(User user)
         {
-            using (UserRepository userRepo = new UserRepository())
+            using (UserRepository ur = new UserRepository())
             {
-                var u = userRepo.Get(user.Id);
+                var u = ur.Get(user.Id);
                 user.UserType = u.UserType;
-                user.ConfirmPassword = user.Password;
+
 
             }
 
@@ -80,12 +80,7 @@ namespace Library.Controllers
         {
             if ((string)Session["Usertype"] == "Customer")
             {
-
-
-
                 return View(ur.Get(id));
-
-
             }
 
 
@@ -111,6 +106,41 @@ namespace Library.Controllers
                 return RedirectToAction("index", "Login");
 
             }
+
+        }
+
+
+        [HttpPost]
+        public ActionResult ChangePass(User user, string oPass, string nPass, string cPass)
+        {
+
+            var getUser = ur.Get(user.Id);
+
+
+            if (getUser.Password == oPass)
+            {
+
+                if (nPass == cPass)
+                {
+                    //user.ConfirmPassword = cPass;
+                    getUser.Password = nPass;
+                    ur.Update(getUser);
+
+                    return RedirectToAction("index", "Login");
+                }
+                else
+                {
+                    TempData["error"] = " password doesn't match";
+                }
+            }
+
+            else
+            {
+                TempData["error"] = "incorrect old password";
+            }
+
+            return View();
+
 
         }
 
@@ -162,7 +192,61 @@ namespace Library.Controllers
 
         }
 
-    }
 
+        [HttpGet]
+        public ActionResult ProfilePicture()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult profilePicture(Image image, HttpPostedFileBase postedImage)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                byte[] bytes;
+                using (BinaryReader breader = new BinaryReader(postedImage.InputStream))
+                {
+                    bytes = breader.ReadBytes(postedImage.ContentLength);
+                }
+
+                image.Name = Path.GetFileName(postedImage.FileName);
+                image.ImageData = bytes;
+
+
+                image.UserId = (int)Session["ID"];
+
+                ir.Insert(image);
+                return RedirectToAction("CProfile", "Customer");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        //[HttpGet]
+        //public ActionResult profilerender(int id)
+        //{
+        //    image.Userid = (int)Session["id"];
+
+        //    var getimage = ir.Get(image.id);
+        //    image.imagedata = getimage.ImageData;
+
+        //    var g = ir.Get(id);
+
+        //    return View(g);
+        //}
+
+
+
+
+        }
 }
+
+
+
 

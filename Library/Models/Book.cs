@@ -20,7 +20,7 @@ namespace Library.Models
         {
             this.Genres = new HashSet<Genre>();
         }
-    
+
         public int Id { get; set; }
 
         [Required(ErrorMessage = "*book title can't be empty")]
@@ -36,7 +36,7 @@ namespace Library.Models
         public double Price { get; set; }
         public string PdfName { get; set; }
         public byte[] BookData { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Genre> Genres { get; set; }
     }

@@ -10,19 +10,19 @@
         <form action="" method="post">
             <div class="form-group">
                 <label for="OldPassword">Old Password</label>
-                <input type="text" class="form-control" name="Username" placeholder="Enter Username">
+                <input type="text" class="form-control" name="oPass" placeholder="Enter Username">
                 <span style="color:red;">@TempData["error"]</span>
             </div>
             <div class="form-group">
                 <label for="Password">New Password</label>
-                <input type="password" class="form-control" name="Password" placeholder="Enter new Password">
+                <input type="password" class="form-control" name="nPass" placeholder="Enter new Password">
                 <span style="color:red">@Html.ValidationMessageFor(model => model.Password)</span>
                 <span style="color:red;">@TempData["error"]</span>
             </div>
             
             <div class="form-group">
                 <label for="ConfirmPassword">Confirm Password</label>
-                <input type="password" class="form-control" name="ConfirmPassword" placeholder="Enter Confirm Password">
+                <input type="password" class="form-control" name="cPass" placeholder="Enter Confirm Password">
         
                 <span style="color:red;">@TempData["error"]</span>
             </div>

@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
 namespace Library.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Image
     {
         public int Id { get; set; }
-        public string Path { get; set; }
         public int UserId { get; set; }
         public byte[] ImageData { get; set; }
-    
+        public string Name { get; set; }
         public virtual User User { get; set; }
     }
 }

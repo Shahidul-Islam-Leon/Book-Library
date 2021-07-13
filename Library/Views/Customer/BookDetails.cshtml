@@ -7,9 +7,9 @@
 <div>
     <h4>Book</h4>
     <hr />
-    <table class="table">
+    <table class="table w-auto">
 
-        <tr>
+        <tr class="table-primary">
             <td>
                 @Html.DisplayNameFor(model => model.Title)
             </td>
@@ -19,7 +19,7 @@
             </td>
         </tr>
 
-        <tr>
+        <tr class="table-success">
             <td>
                 @Html.DisplayNameFor(model => model.Author)
             </td>
@@ -28,7 +28,7 @@
                 @Html.DisplayFor(model => model.Author)
             </td>
         </tr>
-        <tr>
+        <tr class="table-info">
             <td>
                 @Html.DisplayNameFor(model => model.Edition)
             </td>
@@ -37,7 +37,7 @@
                 @Html.DisplayFor(model => model.Edition)
             </td>
         </tr>
-        <tr>
+        <tr class="table-warning">
             <td>
                 @Html.DisplayNameFor(model => model.Price)
             </td>
@@ -47,9 +47,11 @@
             </td>
         </tr>
     </table>
-    <a href="BookDownload/Book">Download</a>
+    
+        
+    
 </div>
 <p>
 
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back", "AllBook")
 </p>

@@ -36,18 +36,23 @@ namespace Library.Models
          MinLength(4, ErrorMessage = "Password should be atleast 4 character")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "*Confirm Password required")]
-        [Compare("Password", ErrorMessage = "*Password doesn't match")]
-        [NotMapped]
-        public string ConfirmPassword { get; set; }
+
+        //[Required(ErrorMessage = "*Confirm Password required")]
+        //[Compare("Password", ErrorMessage = "*Password doesn't match")]
+        //[NotMapped]
+        //public string ConfirmPassword { get; set;}
+
 
         [Required(ErrorMessage = "*Email required")]
         public string Email { get; set; }
 
+
         [Required(ErrorMessage = "*Phone number required")]
         public string Phone { get; set; }
+
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }
     }
 }
+

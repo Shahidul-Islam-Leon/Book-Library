@@ -4,30 +4,18 @@
     Layout = "~/Views/Shared/_CusLayout.cshtml";
 }
 
-<table class="table" border="1">
+<table class="table table-striped w-auto .table-fixed">
     
-    <tr>
-        <th width="10px">
-            Name
-        </th>
-
-        <th width="10px">
-            Details
-        </th>
-
-    </tr>
+ 
 
     @foreach (var item in Model)
     {
         <tr>
-            <td width="10px">
-                @Html.DisplayFor(modelItem => item.Title)
+            <td style="color:lightgreen">
+                <a href="BookDetails/@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>  
             </td>
 
-            <td width="10px">
-                @Html.ActionLink("Details", "BookDetails", new { id = item.Id })
-            </td>
-            <td>
+            <td style="color:khaki">
                 @Html.ActionLink("Downlaod", "BookDownload", new { id = item.Id })
             </td>
         </tr>

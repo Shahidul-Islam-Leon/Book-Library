@@ -70,20 +70,27 @@ namespace Library.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddAdmin(User user)
+        public ActionResult AddAdmin(User user,string ConfirmPassword)
         {
             if (ModelState.IsValid)
             {
-                user.UserType = "Admin";
-                ur.Insert(user);
 
-                return RedirectToAction("Admins", "Admin");
+                if (user.Password == ConfirmPassword)
+                {
+                    user.UserType = "Admin";
+                    ur.Insert(user);
+
+                    return RedirectToAction("../home/index");
+                }
+                else
+                {
+                    TempData["error"] = "Confirm password doesn't match";
+                }
 
             }
-            else
-            {
-                return View();
-            }
+
+            return View();
+
 
         }
 
@@ -149,7 +156,7 @@ namespace Library.Controllers
             {
                 var u = userRepo.Get(user.Id);
                 user.UserType = u.UserType;
-                user.ConfirmPassword = user.Password;
+               // user.ConfirmPassword = user.Password;
 
             }
 

@@ -22,7 +22,7 @@ namespace Library.Controllers
         public ActionResult Index(User user)
         {
 
-            var checkedUser = context.Users.Where(x => x.Username.Equals(user.Username) & x.Password.Equals(user.Password)).FirstOrDefault();
+            var checkedUser = context.Users.Where(x => x.Username.Equals(user.Username) && x.Password.Equals(user.Password)).FirstOrDefault();
 
             if (checkedUser != null)
             {

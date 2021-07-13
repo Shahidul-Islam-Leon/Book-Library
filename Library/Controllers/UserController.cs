@@ -2,6 +2,7 @@
 using Library.Models.Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -25,20 +26,30 @@ namespace Library.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registration(User user)
+        public ActionResult Registration(User user,string ConfirmPassword)
         {
             if (ModelState.IsValid)
             {
-               
-                user.UserType = "Customer";
-                ur.Insert(user);
 
-                return RedirectToAction("../home/index");
+                if (user.Password==ConfirmPassword)
+                {
+                    user.UserType = "Customer";
+                    ur.Insert(user);
+
+                    return RedirectToAction("../home/index");
+                }
+                else
+                {
+                    TempData["error"] = "Confirm password doesn't match";
+                }
+                
             }
-            else
-            {
+           
                 return View();
-            }
+            
         }
+
+
+
     }
 }

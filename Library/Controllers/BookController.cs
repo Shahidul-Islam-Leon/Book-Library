@@ -20,8 +20,8 @@ namespace Library.Controllers
         {
             if ((string)Session["UserType"] == "Admin")
             {
-
-                return View(br.GetALLData());
+                var r = br.GetALLData();
+                return View(r);
             }
             else
             {
