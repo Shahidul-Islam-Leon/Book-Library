@@ -30,18 +30,28 @@ namespace Library.Controllers
         {
             if (ModelState.IsValid)
             {
+                var u = ur.GetUserByUsername(user.Username);
 
-                if (user.Password==ConfirmPassword)
+                if ( u==null)
                 {
-                    user.UserType = "Customer";
-                    ur.Insert(user);
+                    if (user.Password == ConfirmPassword)
+                    {
+                        user.UserType = "Customer";
+                        ur.Insert(user);
 
-                    return RedirectToAction("../home/index");
+                        return RedirectToAction("../home/index");
+                    }
+                    else
+                    {
+                        TempData["errorCpass"] = "Confirm password doesn't match";
+                    }
                 }
                 else
                 {
-                    TempData["error"] = "Confirm password doesn't match";
+                    TempData["error"] = "*Username already taken";
                 }
+
+              
                 
             }
            

@@ -9,12 +9,16 @@ namespace Library.Models.Repository
     {
 
         DBEntities context = new DBEntities();
+
         public User GetUserByUsername(string username)
         {
 
             return this.GetALLData().Where(x => x.Username == username).FirstOrDefault();
 
         }
+
+
+
         public List<User> GetAllAdmin(string usertype)
         {
 
