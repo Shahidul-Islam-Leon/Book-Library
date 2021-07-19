@@ -10,7 +10,7 @@
 
             <div class="form-group">
                 <label for="Title">Title</label>
-                <input type="text" class="form-control" name="Title" placeholder="Enter Genre">
+                <input type="text" class="form-control" name="Title" placeholder="Enter Title">
                 <span style="color:red">@Html.ValidationMessageFor(model => model.Title)</span>
             </div>
 
@@ -31,7 +31,7 @@
 
                 {
 
-                    <input type="checkbox"  name="Genre" value="@item.Id" />@item.GenreName <br />
+                    <input type="checkbox"  name="Genre" value="@item.Id" /> <br/>@item.GenreName <br />
 
                 }
             </div>
